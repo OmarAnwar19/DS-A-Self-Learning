@@ -43,7 +43,8 @@ if __name__ == "__main__":
     # the elements array
     elements = [21, 38, 29, 17, 4, 25, 11, 32, 9]
 
-    # call the function to sort the array, returns in place
+    # call the function to sort the array, returns in pla
+    # ce
     insertion_sort(elements)
 
     # print the elements
