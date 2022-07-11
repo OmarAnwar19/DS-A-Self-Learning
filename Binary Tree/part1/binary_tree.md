@@ -60,4 +60,4 @@ Insertion time complexity:
 
 ### Big O complexity - space:
 
-here
+Space complexity for a binary search tree itself is proportional to the number of nodes in the tree. Hence, O(n)
