@@ -1,6 +1,6 @@
 # Graphs
 
----
+_great_resource: https://www.baeldung.com/cs/adjacency-matrix-list-complexity_
 
 ## What are they?
 
@@ -20,7 +20,7 @@ The main difference between directed and undirected graph is that a directed gra
 
 If edges in your graph have weights then your graph is said to be a weighted graph, if the edges do not have weights, the graph is said to be unweighted. A weight is a numerical value attached to each individual edge.
 
-For example, in a flight booking website, if you want to navigate from point a to point d, there may be two different paths; points a --> b --> c --> d OR points a --> c --> d. Although the second path might seem shorter, if they have weights attached to them, the first path might actually be shorter, if the weights between the paths (weight here is the distance) is less than the weights in the second path.
+For example, in a flight booking website, if you want to navigate from point a to point d, there may be two different paths; points: a --> b --> c --> d OR points: a --> c --> d. Although the second path might seem shorter, if they have weights attached to them, the first path might actually be shorter, if the weights between the paths (weight here is the distance) is less than the weights in the second path.
 
 ### Graph vs Tree
 
