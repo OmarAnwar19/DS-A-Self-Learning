@@ -119,15 +119,12 @@ class Graph:
 if __name__ == "__main__":
     # an array of all the possible routes in india
     routes = [
-        ("Mumbai", "Pune"),
-        ("Mumbai", "Surat"),
-        ("Surat", "Bangaluru"),
-        ("Pune", "Hyderabad"),
-        ("Pune", "Mysuru"),
-        ("Hyderabad", "Bangaluru"),
-        ("Hyderabad", "Chennai"),
-        ("Mysuru", "Bangaluru"),
-        ("Chennai", "Bangaluru")
+        ("Mumbai", "Paris"),
+        ("Mumbai", "Dubai"),
+        ("Paris", "Dubai"),
+        ("Paris", "New York"),
+        ("Dubai", "New York"),
+        ("New York", "Toronto"),
     ]
 
     # we can create a new graph, with edges as the routes above un-changed
@@ -139,7 +136,7 @@ if __name__ == "__main__":
 
     # set our current start and end location
     start = "Mumbai"
-    end = "Bangaluru"
+    end = "New York"
 
     # print all the paths between start and end
     print(
