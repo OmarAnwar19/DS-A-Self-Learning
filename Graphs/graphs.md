@@ -36,7 +36,7 @@ The two main methods to store a graph in memory are adjacency matrix and adjacen
 
 ### Adjacency Matrix
 
-The first way to represent a graph in a computer’s memory is to build an adjacency matrix. Assume our graph consists of n nodes numbered from 1 to n. An adjacency matrix is a binary matrix of size n \times n. There are two possible values in each cell of the matrix: 0 and 1. Suppose there exists an edge between nodes n*{i} and n*{j}. It means, that the value in the i^{th} row and j^{th} column of such matrix is equal to 1. Importantly, if the graph is undirected then the matrix is symmetric.
+The first way to represent a graph in a computer’s memory is to build an adjacency matrix. Assume our graph consists of n nodes numbered from 1 to n. An adjacency matrix is a binary matrix of size n * n. There are two possible values in each cell of the matrix: 0 and 1. Suppose there exists an edge between nodes n*{i} and n*{j}. It means, that the value in the i^{th} row and j^{th} column of such matrix is equal to 1. Importantly, if the graph is undirected then the matrix is symmetric.
 
 #### Big O Complexity - time:
 

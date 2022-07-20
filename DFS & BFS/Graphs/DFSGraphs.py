@@ -32,7 +32,6 @@ class Graph:
     # path keeps track of the path from start_node to target_node,
     # and visited keeps track of all of the nodes we visited, to avoid an infinite loop
     def dfs(self, start_node, target_node, path=[], visited=[]):
-        # we first check if the start or target node are actually even part of the graph
         if start_node not in self.adj_list or target_node not in self.adj_list:
             # if they are not (not in adjacency list), we return False before we check anything
             return False
@@ -59,15 +58,18 @@ class Graph:
                 # then, you recursively call the funciton to find the path from the next_node, to the start_node
                 # by doing this for every edge of the original start node, we find paths from each edge to each start,
                 # then, we take all of the connections from neighbour to start, and attach them together to create a full path
-                result = self.dfs(next_node, start_node, path, visited)
+                result = self.dfs(next_node, target_node, path, visited)
 
-                # if the result is not none (there is a path between the current start node and target node)
                 if result is not None:
                     # return the result
                     return result
 
-        # return the current path
-        return path
+        # if the loop above is exited, that means the current node is not part of the path,
+        # so, remove it from the top of the path array
+        path.pop()
+
+        # if no path is found, return None
+        return None
 
 
 if __name__ == "__main__":
@@ -75,4 +77,4 @@ if __name__ == "__main__":
     # we have a dictionary, with each node as keys, and then its adjacent nodes as values
     abc_graph = Graph()
 
-    print(f"path: {abc_graph.dfs('A', 'G')}")
+    print(f"path: {abc_graph.dfs('A', 'F')}")
