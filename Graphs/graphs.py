@@ -32,19 +32,17 @@ class Graph:
         # we create path. this is the pre-existing path, + the current start location
         path = path + [start]
 
-        # the first thing we check is if the start is even a correct location
-        if start not in self.graph_dict:
-            # if not, return an empty array, since there are no paths originating from it
-            return []
-
-        # if thats all good, we can start looking for paths,
-
         # then, we check if the start and end are same
         # --> this is also used in our recursive call, as since we move our start locaiton each time, eventually start will be our end locaiton
         # at that point, we hit this if statement, which will return our final path
         if start == end:
             # if they are, dont check any paths, just return the current path (same location)
-            return path
+            return [path]
+
+        # the first thing we check is if the start is even a correct location
+        if start not in self.graph_dict:
+            # if not, return an empty array, since there are no paths originating from it
+            return []
 
         # this variable will hold all of the possible paths we get by traversing through each edge from our start
         all_paths = []
@@ -90,7 +88,7 @@ class Graph:
         # then, we check if the start and end are same
         # --> this is also used in our recursive call, as since we move our start locaiton each time, eventually start will be our end locaiton
         # at that point, we hit this if statement, which will return our final path
-        if start == end:
+        if start == end: 
             # if they are, dont check any paths, just return the current path (same location)
             return path
 

@@ -25,51 +25,83 @@ class Graph:
         for key in self.adj_list.keys():
             print(f"node {key}: {self.adj_list[key]}")
 
-    # the actual function to preform depth first search
-    # we take in self, and the node we are looking for
+    # function to get all of the paths between a start and end node
+    # --> also takes in the current path recursively
+    def get_all_paths(self, start, end, path=[]):
+        #!!to get all of the paths from point a to c, we have to find all the paths form point b to c, then add point a to all of them!!
+        #!! --> this is the principal we will work on to find our paths
 
-    # we also pass in a path, and visited nodes arrays,
-    # path keeps track of the path from start_node to target_node,
-    # and visited keeps track of all of the nodes we visited, to avoid an infinite loop
-    def dfs(self, start_node, target_node, path=[], visited=[]):
-        if start_node not in self.adj_list or target_node not in self.adj_list:
-            # if they are not (not in adjacency list), we return False before we check anything
-            return False
+        # we create path. this is the pre-existing path, + the current start location
+        path = path + [start]
 
-        # we start by appending the start node to both the path, and the visited nodes arrays
-        # appending start_node to path adds it to the path from start to target,
-        # and appending it to visited stops us getting into a loop where we check it over and over
+        # the first thing we check is if the start is even a correct location
+        if start not in self.adj_list:
+            # if not, return an empty array, since there are no paths originating from it
+            return []
 
-        # as this function is called recursively, we append the new start_node, which is the neighbours of this node
-        path.append(start_node)
-        visited.append(start_node)
+        # then, we check if the start and end are same
+        # --> this is also used in our recursive call, as since we move our start locaiton each time, eventually start will be our end locaiton
+        # at that point, we hit this if statement, which will return our final path
+        if start == end:
+            # if they are, dont check any paths, just return the current path (same location)
+            return [path]
 
-        # afterwards, we check if the current node is the target node,
-        # this occurs if start and target are same, or, if we have traversed to the target node
-        if start_node == target_node:
-            # if this is the case, we return the path
+        # this variable will hold all of the possible paths we get by traversing through each edge from our start
+        all_paths = []
+
+        # otherwise, that means the locations are both routable
+        # loop over each edge which connects to our start location in our adj_list
+        for location in self.adj_list[start]:
+            # if the location is not already in path (we have not already traversed to it)
+            if location not in path:
+                # get all of the possible paths from that path (the one that connects to our start), to the end location
+                new_paths = self.get_all_paths(location, end, path)
+
+                # loop over each one of the new paths, and add them to our all_paths
+                for p in new_paths:
+                    # add each individual path to all_paths
+                    all_paths.append(p)
+
+        # finally, return all of the paths from location start to end
+        return all_paths
+
+    # function to get the shortest path between start and end based on lowest number of stops
+    def get_shortest_path(self, start, end, path=[]):
+        # we create path. this is the pre-existing path, + the current start location
+        path = path + [start]
+
+        # the first thing we check is if the start is even a correct location
+        if start not in self.adj_list:
+            # if not, return an empty array, since there are no paths originating from it
+            return []
+
+        # then, we check if the start and end are same
+        # --> this is also used in our recursive call, as since we move our start locaiton each time, eventually start will be our end locaiton
+        # at that point, we hit this if statement, which will return our final path
+        if start == end:
+            # if they are, dont check any paths, just return the current path (same location)
             return path
 
-        # then, we loop for every node that is adjacent to the current node (in adjacency list)
-        for next_node in self.adj_list[start_node]:
-            # if the node has not already been visited (not in visited)
-            if next_node not in visited:
+        # set a variable for the current shortest path, starts as none
+        shortest_path = None
 
-                # then, you recursively call the funciton to find the path from the next_node, to the start_node
-                # by doing this for every edge of the original start node, we find paths from each edge to each start,
-                # then, we take all of the connections from neighbour to start, and attach them together to create a full path
-                result = self.dfs(next_node, target_node, path, visited)
+        # the first part of this loop is the same as the one in get_all_paths
+        for location in self.adj_list[start]:
+            if location not in path:
+                # here is where it changes, so, we get the current path
+                curr_path = self.get_shortest_path(location, end, path)
 
-                if result is not None:
-                    # return the result
-                    return result
+                # then, if is valud
+                if curr_path:
+                    # we have to check whether or not we should set it as the shortest path
+                    # we set it as the shortest path under two conditions:
+                    # if the current shortest path is None (has nto been set yet)
+                    # or, if it is shorter than the current shortest path
+                    if shortest_path is None or len(curr_path) < len(shortest_path):
+                        shortest_path = curr_path
 
-        # if the loop above is exited, that means the current node is not part of the path,
-        # so, remove it from the top of the path array
-        path.pop()
-
-        # if no path is found, return None
-        return None
+        # finally, return the shortest path
+        return shortest_path
 
 
 if __name__ == "__main__":
