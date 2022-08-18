@@ -8,7 +8,7 @@ Basically, a HashMap allows you to store items with identifiers. They are stored
 
 ### Array vs Hashmap
 
-Let's say we wanted to find a price on a specific date, if we were to do that with an array, the search proccess would be O(n), since we have to through each element until we reach the specific date. On the other hand, in a hash map, the look up would only be O(1), since we access the specifc date (prices[date] = price we are looking for)
+Let's say we wanted to find a price on a specific date, if we were to do that with an array, the search proccess would be O(n), since we have to iterate through each element until we reach the specific date. On the other hand, in a hash map, the look up would only be O(1), since we access the specifc date (prices[date] = price we are looking for)
 
 This is beacause in memory, an array of arrays stores each key and value in individual memory indexes, while a dictionary will store the pair in random, non contiguous data locations, so we can just refrence the key and value pairs whenever we need them.
 

@@ -10,7 +10,7 @@ First, we have to realize that with an unsorted array, the merge from pre-info w
 
 ### Big O (time) complexity
 
-The time complexity of merge sort is O(n log n)
+The time complexity of merge sort is O(n log n), as the time it takes to preform merge sort increases exponentially by a constant of 2, as you have to break down the array into half partitions each time, which increases exponentially as you add more items to the dataset.
 
 ### Space complexity
 
