@@ -1,4 +1,4 @@
-def merge_sort(arr, desc=False):
+def partition(arr):
     if len(arr) <= 1:
         return
 
@@ -6,26 +6,20 @@ def merge_sort(arr, desc=False):
     left = arr[:mid]
     right = arr[mid:]
 
-    merge_sort(left, desc)
-    merge_sort(right, desc)
+    partition(left)
+    partition(right)
 
-    merge_two_sorted_arrays(left, right, arr, desc)
+    merge_sort(left, right, arr)
 
 
-def merge_two_sorted_arrays(left, right, arr, desc):
+def merge_sort(left, right, arr):
     len_a = len(left)
     len_b = len(right)
 
     i = j = k = 0
 
     while i < len_a and j < len_b:
-        # assigns the sign based on if desc is True or False
-        # left <= right: ascending
-        # left >= right: descending
-        operator = (left[i] >= right[j]) if desc else (
-            left[i] <= right[j])
-
-        if operator:
+        if left[i] <= right[j]:
             arr[k] = left[i]
             i += 1
         else:
@@ -48,6 +42,6 @@ def merge_two_sorted_arrays(left, right, arr, desc):
 if __name__ == "__main__":
     arr = [5, 90, 72, 15, 122, 34, 56, 12, 1]
 
-    merge_sort(arr, key="age", desc=False)
+    merge_sort(arr)
 
     print(arr)

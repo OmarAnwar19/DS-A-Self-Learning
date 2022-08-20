@@ -1,6 +1,3 @@
-from dataclasses import dataclass
-
-
 # we can create a general tree class, to represent this data structure
 
 
@@ -15,6 +12,7 @@ class TreeNode:
         self.parent = None
 
     # method to add children to the tree node (append children to its array)
+    # we call this method on the parent node, so it sets the parent of each child node as itself (as it is called on parent node)
     def add_child(self, child):
         # first, we have to set the parent of the child node as the current node
         # --> i.e since this is a child, its parent is this one since its direcly above

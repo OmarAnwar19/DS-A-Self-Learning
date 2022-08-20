@@ -1,9 +1,12 @@
 # normal merge sort is a recursive function, so we have to keep that in mind
 def merge_sort(arr):
+    # first, we can get the size of the array
+    size = len(arr)
+
     # like any recursive function, we first have to make our base case
     # the base case for merge sort is if the length of the array is 0 or 1
     # this will occur if the array is on the first step of merge after divide
-    if len(arr) <= 1:
+    if size <= 1:
         # so, according to how recursion works, we pass in the left side
         # then the right side, and they will keep getting divided into left and right
         # until the length of the array is less than or equal to 1,
@@ -14,7 +17,7 @@ def merge_sort(arr):
     # for merge sort, we have to divide the array in half over and over,
     # we can do this by splitting the array into left and right
     # to do this, we first have to get the mid point of the array
-    mid = (len(arr)) // 2
+    mid = size // 2
     # then, we can get the left and right side of the array
     # left is from the beginning (start): until the mid point (start):mid
     left = arr[:mid]

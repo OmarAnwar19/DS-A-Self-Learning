@@ -14,7 +14,7 @@ class LinkedList:
 
     # first method is to insert the head
     def insert_head(self, data):
-        # we create a new node, passing in data=data, and the current head as the net node
+        # we create a new node, passing in data=data, and the current head as the next node
         # --> this is because if we insert a new head, that means the old head is pushed over one
         node = Node(data, self.head)
         # then, we set the new head as the one we just created
