@@ -16,9 +16,8 @@ def iterativeBinarySearch(array, x, low, high):
 
     return -1
 
+
 # recursive
-
-
 def recursiveBinarySearch(array, x, low, high):
     if high >= low:
 
